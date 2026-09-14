@@ -1,0 +1,13 @@
+.navigation{
+    width: 100vw;
+    height: 2rem;
+    background-color:#8B6B3D;
+}
+
+.navigation a{
+   color: black;
+   padding-left: 1rem;
+   text-decoration: none;
+  
+
+}
