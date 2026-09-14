@@ -23,4 +23,8 @@ export class StickyService {
     const q = query(this.noteColl, orderBy('createdOn', 'desc'));
     return collectionData(q, { idField: 'id' }) as Observable<StickyNoteInterface[]>;
   }
+
+  deleteNote(id: string){
+    console.log('SERVICE deleting:', id)
+  }
 }

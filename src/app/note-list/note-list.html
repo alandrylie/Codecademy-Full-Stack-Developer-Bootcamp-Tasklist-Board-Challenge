@@ -5,6 +5,7 @@
 <article class="notes" [class.completed]="note.completed" [attr.data-colour]="note.colour">
     <h2>Title: {{note.title}}</h2>
     <p>Details: {{note.details}}</p>     
+    <button class="remove" (click)="delete(note.id)">X</button>
 </article>
 }
 
