@@ -1,9 +1,9 @@
 <div id="formWrapper">
 
-    <form id="createForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <form id="createForm" [formGroup]="noteForm" (ngSubmit)="onSubmit()">
         <label for="title">Task Title:</label>
         <input id="title" formControlName="title" placeholder="What task needs doing.">
-        @if(taskForm.controls.title.touched && taskForm.controls.title.invalid){
+        @if(noteForm.controls.title.touched && noteForm.controls.title.invalid){
         <p>A task title needs a minimum of 3 characters.</p>
         }
         <label for="details">Details</label>
@@ -19,7 +19,7 @@
             <option value="yellow">Yellow</option>
         </select>
 
-        <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+        <button type="submit" [disabled]="noteForm.invalid">Add Task</button>
     </form>
 
 </div>

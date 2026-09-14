@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StickyService } from '../sticky-service';
 import { NewNote } from '../sticky-note-interface';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -11,8 +12,9 @@ import { NewNote } from '../sticky-note-interface';
 })
 export class NoteCreate {
   private noteService = inject(StickyService);
+  private router = inject(Router)
 
-  taskForm = new FormGroup({
+  noteForm = new FormGroup({
     title: new FormControl('', {
       validators: [Validators.required, Validators.minLength(3)],
       nonNullable: true,
@@ -22,14 +24,16 @@ export class NoteCreate {
   });
 
   async onSubmit() {
-    if (this.taskForm.invalid) return;
+    if (this.noteForm.invalid) return;
 
     const newNote: NewNote = {
-      ...this.taskForm.getRawValue(),
+      ...this.noteForm.getRawValue(),
       completed: false,
       createdOn: Date.now(),
     };
    
     await this.noteService.addNote(newNote);
+    this.noteForm.reset();
+    this.router.navigate(['/notes']);
   }
 }

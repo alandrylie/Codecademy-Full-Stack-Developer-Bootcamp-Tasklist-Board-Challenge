@@ -3,9 +3,11 @@
 @for(note of notes(); track note.id){
 
 <article class="notes" [class.completed]="note.completed" [attr.data-colour]="note.colour">
-    <h2>{{note.title}}</h2>
-    <p>{{note.details}}</p>
-   
-    
+    <h2>Title: {{note.title}}</h2>
+    <p>Details: {{note.details}}</p>     
 </article>
+}
+
+@empty {
+<p class="empty">No tasks yet. Pin your first one!</p>
 }
