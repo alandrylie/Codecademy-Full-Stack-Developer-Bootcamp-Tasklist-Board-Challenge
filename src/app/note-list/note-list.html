@@ -1,1 +1,11 @@
-<h1>note-list works!</h1>
+<h1>My Sticky-Notes Board <span class="count">Open Tasks: {{openNoteCount()}} / Total Tasks: {{totalNoteCount()}}</span></h1>
+<div class="stickyNote">
+@for(note of notes(); track note.id){
+
+<article class="notes" [class.completed]="note.completed" [attr.data-colour]="note.colour">
+    <h2>{{note.title}}</h2>
+    <p>{{note.details}}</p>
+   
+    
+</article>
+}
