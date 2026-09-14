@@ -6,6 +6,8 @@ import {
   query,
   orderBy,
   collectionData,
+  deleteDoc,
+  doc,
 } from '@angular/fire/firestore';
 import { NewNote, StickyNoteInterface } from './sticky-note-interface';
 import { Observable } from 'rxjs';
@@ -24,7 +26,7 @@ export class StickyService {
     return collectionData(q, { idField: 'id' }) as Observable<StickyNoteInterface[]>;
   }
 
-  deleteNote(id: string){
-    console.log('SERVICE deleting:', id)
+  deleteNote(id: string) {
+    return deleteDoc(doc(this.firestore, 'tasks', id));
   }
 }

@@ -17,5 +17,5 @@ body {
     35px 35px,
     100% 100%;
   background-repeat: repeat, repeat, repeat, no-repeat;
-  height: 100vh;
+  min-height: 100vh;
 }

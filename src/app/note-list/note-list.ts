@@ -16,9 +16,8 @@ export class NoteList {
   openNoteCount = computed(() => this.notes().filter((n) => !n.completed).length);
   totalNoteCount = computed(() => this.notes().length);
 
-  async delete(id: string){
-    console.log('DELETE clicked for note id:', id)
-    if(!confirm('Delete this note>')) return;
-    await this.noteService.deleteNote(id)
+  async delete(id: string) {
+    if (!confirm('Delete this note>')) return;
+    await this.noteService.deleteNote(id);
   }
 }
