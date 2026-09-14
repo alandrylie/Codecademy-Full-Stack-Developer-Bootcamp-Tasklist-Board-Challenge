@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { StickyService } from '../sticky-service';
+import { NewNote } from '../sticky-note-interface';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -8,6 +10,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './note-create.html',
 })
 export class NoteCreate {
+  private noteService = inject(StickyService);
+
   taskForm = new FormGroup({
     title: new FormControl('', {
       validators: [Validators.required, Validators.minLength(3)],
@@ -17,7 +21,19 @@ export class NoteCreate {
     colour: new FormControl('', { validators: Validators.required, nonNullable: true }),
   });
 
-  onSubmit() {
-    console.log(this.taskForm.value);
+  async onSubmit() {
+    console.log('componet has recevied', this.taskForm.value);
+
+    if (this.taskForm.invalid) return;
+
+    const newNote: NewNote = {
+      ...this.taskForm.getRawValue(),
+      completed: false,
+      createdOn: Date.now(),
+    };
+
+    console.log('Compoenent sending:', newNote);
+
+    await this.noteService.addNote(newNote);
   }
 }
