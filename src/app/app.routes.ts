@@ -1,28 +1,29 @@
 import { Routes } from '@angular/router';
-import { TaskList } from './task-list/task-list';
-import { TaskCreate } from './task-create/task-create';
-import { TaskUpdate } from './task-update/task-update';
+
+import { NoteCreate } from './note-create/note-create';
+import { NoteList } from './note-list/note-list';
+import { NoteUpdate } from './note-update/note-update';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tasks',
+    redirectTo: 'notes',
     pathMatch: 'full',
   },
   {
-    path: 'tasks',
-    component: TaskList,
+    path: 'notes',
+    component: NoteList,
   },
   {
-    path: 'tasks/new',
-    component: TaskCreate,
+    path: 'notes/new',
+    component: NoteCreate,
   },
   {
-    path: 'tasks/:id/update',
-    component: TaskUpdate,
+    path: 'notes/:id/update',
+    component: NoteUpdate,
   },
   {
     path: '**',
-    redirectTo: 'tasks',
+    redirectTo: 'notes',
   },
 ];
