@@ -8,6 +8,7 @@ export class StickyService {
   private noteColl = collection(this.firestore, 'tasks');
 
   addNote(note: NewNote){
-    console.log('Service recevied:', note);
+   
+    return addDoc(this.noteColl, note);
   }
 }

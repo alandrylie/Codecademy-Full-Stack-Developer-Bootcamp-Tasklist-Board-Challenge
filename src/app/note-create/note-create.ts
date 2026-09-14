@@ -22,8 +22,6 @@ export class NoteCreate {
   });
 
   async onSubmit() {
-    console.log('componet has recevied', this.taskForm.value);
-
     if (this.taskForm.invalid) return;
 
     const newNote: NewNote = {
@@ -31,9 +29,7 @@ export class NoteCreate {
       completed: false,
       createdOn: Date.now(),
     };
-
-    console.log('Compoenent sending:', newNote);
-
+   
     await this.noteService.addNote(newNote);
   }
 }
