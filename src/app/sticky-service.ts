@@ -9,6 +9,7 @@ import {
   deleteDoc,
   doc,
   docData,
+  updateDoc,
 } from '@angular/fire/firestore';
 import { NewNote, StickyNoteInterface } from './sticky-note-interface';
 import { Observable } from 'rxjs';
@@ -30,13 +31,13 @@ export class StickyService {
   deleteNote(id: string) {
     return deleteDoc(doc(this.firestore, 'tasks', id));
   }
-  
-  getNote(id: string): Observable<StickyNoteInterface>{
+
+  getNote(id: string): Observable<StickyNoteInterface> {
     const ref = doc(this.firestore, 'tasks', id);
-    return docData(ref, {idField: 'id'}) as Observable<StickyNoteInterface>
+    return docData(ref, { idField: 'id' }) as Observable<StickyNoteInterface>;
   }
 
-  updateNote(id: string, changes: Partial<NewNote>){
-    console.log('SERVICE received and is updating', id, changes);
+  updateNote(id: string, changes: Partial<NewNote>) {
+    return updateDoc(doc(this.firestore, 'tasks', id), changes);
   }
 }

@@ -27,7 +27,6 @@ export class NoteUpdate {
   });
 
   constructor() {
-    console.log('UPDATINGid:', this.noteId());
     effect(() => {
       const n = this.note();
       if (!n) return;
@@ -48,7 +47,6 @@ export class NoteUpdate {
 
   async onSubmit() {
     if (this.noteForm.invalid) return;
-    console.log('UPDATING NOTE IS Sending', this.noteForm.value);
     await this.noteService.updateNote(this.noteId(), this.noteForm.getRawValue());
   }
 }

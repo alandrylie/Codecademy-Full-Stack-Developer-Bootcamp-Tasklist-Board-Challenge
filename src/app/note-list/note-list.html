@@ -1,4 +1,4 @@
-<h1>My Sticky-Notes Board <span class="count">Open Tasks: {{openNoteCount()}} / Total Tasks: {{totalNoteCount()}}</span></h1>
+<h1>My Sticky-Notes Board <span class="count">Open Notes: {{openNoteCount()}} / Total Notes: {{totalNoteCount()}}</span></h1>
 <div class="stickyNote">
 @for(note of notes(); track note.id){
 
@@ -11,5 +11,5 @@
 }
 
 @empty {
-<p class="empty">No tasks yet. Pin your first one!</p>
+<p class="empty">No notes yet. Pin your first one!</p>
 }

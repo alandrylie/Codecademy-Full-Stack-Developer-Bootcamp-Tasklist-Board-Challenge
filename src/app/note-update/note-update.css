@@ -1,0 +1,17 @@
+#formWrapper {
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  margin-top: 16px;
+}
+#createForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: solid black 1px;
+  width: 250px;
+  padding: 8px;
+  border-radius: 15px;
+  color: #2b2620;
+  background-color: #c4efa8;
+}
