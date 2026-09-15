@@ -3,9 +3,10 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { filter, switchMap } from 'rxjs';
 import { StickyService } from '../sticky-service';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  imports: [],
+  imports: [ReactiveFormsModule],
   selector: 'app-note-update',
   styleUrl: './note-update.css',
   templateUrl: './note-update.html',
@@ -13,17 +14,41 @@ import { StickyService } from '../sticky-service';
 export class NoteUpdate {
   private route = inject(ActivatedRoute);
   private params = toSignal(this.route.paramMap);
-  private noteService = inject(StickyService)
-  noteId = computed( () => this.params()?.get('id') ?? '');
+  private noteService = inject(StickyService);
+  noteId = computed(() => this.params()?.get('id') ?? '');
 
-  constructor(){
-    effect( () => console.log('UPDATINGid:', this.noteId()))
+  noteForm = new FormGroup({
+    title: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(3)],
+      nonNullable: true,
+    }),
+    details: new FormControl('', { validators: Validators.required, nonNullable: true }),
+    colour: new FormControl('', { validators: Validators.required, nonNullable: true }),
+  });
+
+  constructor() {
+    console.log('UPDATINGid:', this.noteId());
+    effect(() => {
+      const n = this.note();
+      if (!n) return;
+      this.noteForm.patchValue({
+        title: n.title,
+        details: n.details,
+        colour: n.colour,
+      });
+    });
   }
 
   private note$ = toObservable(this.noteId).pipe(
     filter((id): id is string => id !== ''),
-    switchMap(id => this.noteService.getNote(id))
-  )
+    switchMap((id) => this.noteService.getNote(id)),
+  );
 
   note = toSignal(this.note$);
+
+  async onSubmit() {
+    if (this.noteForm.invalid) return;
+    console.log('UPDATING NOTE IS Sending', this.noteForm.value);
+    await this.noteService.updateNote(this.noteId(), this.noteForm.getRawValue());
+  }
 }

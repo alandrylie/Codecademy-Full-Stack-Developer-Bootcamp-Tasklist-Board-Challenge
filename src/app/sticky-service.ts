@@ -37,6 +37,6 @@ export class StickyService {
   }
 
   updateNote(id: string, changes: Partial<NewNote>){
-    console.log('SERVICE updating', id, changes);
+    console.log('SERVICE received and is updating', id, changes);
   }
 }

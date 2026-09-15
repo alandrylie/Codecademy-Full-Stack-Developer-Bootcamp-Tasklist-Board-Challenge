@@ -1,1 +1,25 @@
-<h1>note-update works!</h1>
+<div id="formWrapper">
+
+    <form id="createForm" [formGroup]="noteForm" (ngSubmit)="onSubmit()">
+        <label for="title">Task Title:</label>
+        <input id="title" formControlName="title" placeholder="What task needs doing.">
+        @if(noteForm.controls.title.touched && noteForm.controls.title.invalid){
+        <p>A task title needs a minimum of 3 characters.</p>
+        }
+        <label for="details">Details</label>
+        <textarea id="details" rows="3" formControlName="details"
+            placeholder="Detail exactly what needs done."></textarea>
+
+        <label id="colour">Sticky Note Colour</label>
+        <select id="colour" formControlName="colour">
+            <option value="" disabled>Pick a Colour</option>
+            <option value="pink">Pink</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+            <option value="yellow">Yellow</option>
+        </select>
+
+        <button type="submit" [disabled]="noteForm.invalid">Update Note</button>
+    </form>
+
+</div>
