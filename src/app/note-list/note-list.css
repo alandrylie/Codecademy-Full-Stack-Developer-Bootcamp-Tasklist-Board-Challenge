@@ -27,7 +27,7 @@ h1 {
     width: 200px;
     border-radius: 10px;
     height: 150px;
-   
+   font-family: var(--font-notes);
    
 
 }

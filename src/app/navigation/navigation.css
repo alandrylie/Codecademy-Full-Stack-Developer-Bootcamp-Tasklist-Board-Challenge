@@ -1,13 +1,40 @@
-.navigation{
-    width: 100vw;
-    height: 2rem;
-    background-color:#8B6B3D;
+.navigation {
+  width: auto;
+  height: 3rem;
+  background-color: #e2725b;
+  font-family: var(--font-nav);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 
-.navigation a{
-   color: black;
-   padding-left: 1rem;
-   text-decoration: none;
-  
+.navigation a {
+  color: #4a3625;
+  padding-left: 1rem;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
 
+.navigation a:hover {
+  color: #f4e9d8;
+  transform: scale(1.1);
+}
+
+.navigation a:active {
+  transform: scale(0.95);
+}
+
+#home {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+#newNote {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+#newNote .svg-inline--fa {
+  vertical-align: middle;
+  font-size: 1.25rem;
 }

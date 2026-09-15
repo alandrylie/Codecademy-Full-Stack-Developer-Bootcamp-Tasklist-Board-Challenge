@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --font-notes: 'Quicksand', 'Trebuchet MS', Verdana, sans-serif;
+  --font-nav: 'Nunito', 'Segoe UI', Verdana, sans-serif;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -18,4 +24,7 @@ body {
     100% 100%;
   background-repeat: repeat, repeat, repeat, no-repeat;
   min-height: 100vh;
+  border: solid #4a3625 2rem;
 }
+
+
