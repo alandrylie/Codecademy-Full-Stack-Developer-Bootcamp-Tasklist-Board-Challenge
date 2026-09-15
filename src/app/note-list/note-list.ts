@@ -2,9 +2,10 @@ import { Component, computed, inject } from '@angular/core';
 import { StickyService } from '../sticky-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { StickyNoteInterface } from '../sticky-note-interface';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-note-list',
   styleUrl: './note-list.css',
   templateUrl: './note-list.html',

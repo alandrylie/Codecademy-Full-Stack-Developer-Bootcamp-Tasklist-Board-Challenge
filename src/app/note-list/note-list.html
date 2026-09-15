@@ -6,6 +6,7 @@
     <h2>Title: {{note.title}}</h2>
     <p>Details: {{note.details}}</p>     
     <button class="remove" (click)="delete(note.id)">X</button>
+    <a class="update-link" [routerLink]="['/notes', note.id, 'update']">Update</a>
 </article>
 }
 
