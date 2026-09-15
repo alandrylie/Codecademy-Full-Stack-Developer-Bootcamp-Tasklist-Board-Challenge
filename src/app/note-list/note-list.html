@@ -1,15 +1,19 @@
-<h1>My Sticky-Notes Board <span class="count">Open Notes: {{openNoteCount()}} / Total Notes: {{totalNoteCount()}}</span></h1>
+<h1>My Sticky-Notes Board <span class="count" id="tabletPlus">Open Notes: {{openNoteCount()}} / Total Notes:
+        {{totalNoteCount()}}</span><span class="count" id="mobile">Notes: {{openNoteCount()}} / Total:
+        {{totalNoteCount()}}</span></h1>
 <div class="stickyNote">
-@for(note of notes(); track note.id){
+    @for(note of notes(); track note.id){
 
-<article class="notes" [class.completed]="note.completed" [attr.data-colour]="note.colour">
-    <h2>Title: {{note.title}}</h2>
-    <p>Details: {{note.details}}</p>     
-    <button class="remove" (click)="delete(note.id)">X</button>
-    <a class="update-link" [routerLink]="['/notes', note.id, 'update']">Update</a>
-</article>
-}
+    <article class="notes" [class.completed]="note.completed" [attr.data-colour]="note.colour">
+        <h2>Title: {{note.title}}</h2>
+        <p>Details: {{note.details}}</p>
+        <button class="remove" (click)="delete(note.id)">X</button>
+        <a class="update-link" [routerLink]="['/notes', note.id, 'update']">Update</a>
+    </article>
+    }
 
-@empty {
-<p class="empty">No notes yet. Pin your first one!</p>
-}
+    @empty {
+    <div class="empty">
+        <p >No notes yet. Pin your first one!</p>
+    </div>
+    }

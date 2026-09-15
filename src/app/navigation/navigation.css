@@ -38,3 +38,26 @@
   vertical-align: middle;
   font-size: 1.25rem;
 }
+
+@media (max-width: 800px) {
+
+  .navigation {
+    height: 2rem;
+  }
+
+  #home {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#newNote {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#newNote .svg-inline--fa {
+  vertical-align: middle;
+  font-size: 1.1rem;
+}
+  
+}
