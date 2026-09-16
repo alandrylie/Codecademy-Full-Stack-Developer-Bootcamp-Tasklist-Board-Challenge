@@ -48,7 +48,7 @@ select {
 @media (max-width: 800px) {
 
 
-  #createFrom {
+  #createForm {
     width: 20rem;
   }
 }

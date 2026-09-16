@@ -4,7 +4,6 @@
   --font-nav: 'Nunito', 'Segoe UI', Verdana, sans-serif;
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -27,4 +26,20 @@ body {
   border: solid #4a3625 2rem;
 }
 
+@media (max-width: 500px) {
+  body{
+    border: solid #4a3625 1.5rem;;
+  }
+}
 
+@media (max-width: 400px) {
+  body{
+    border: solid #4a3625 1rem;;
+  }
+}
+
+@media (max-width: 360px) {
+  body{
+    border: solid #4a3625 .75rem;;
+  }
+}

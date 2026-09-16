@@ -15,15 +15,19 @@ export class NoteUpdate {
   private route = inject(ActivatedRoute);
   private params = toSignal(this.route.paramMap);
   private noteService = inject(StickyService);
-  private router = inject(Router)
+  private router = inject(Router);
   noteId = computed(() => this.params()?.get('id') ?? '');
+  noteColour = computed( () => this.note()?.colour);
 
-  noteForm = new FormGroup({
+  updateForm = new FormGroup({
     title: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(3)],
+      validators: [Validators.required, Validators.minLength(3), Validators.maxLength(15)],
       nonNullable: true,
     }),
-    details: new FormControl('', { validators: Validators.required, nonNullable: true }),
+    details: new FormControl('', {
+      validators: [Validators.required, Validators.maxLength(200)],
+      nonNullable: true,
+    }),
     colour: new FormControl('', { validators: Validators.required, nonNullable: true }),
   });
 
@@ -31,7 +35,7 @@ export class NoteUpdate {
     effect(() => {
       const n = this.note();
       if (!n) return;
-      this.noteForm.patchValue({
+      this.updateForm.patchValue({
         title: n.title,
         details: n.details,
         colour: n.colour,
@@ -47,9 +51,9 @@ export class NoteUpdate {
   note = toSignal(this.note$);
 
   async onSubmit() {
-    if (this.noteForm.invalid) return;
-    await this.noteService.updateNote(this.noteId(), this.noteForm.getRawValue());
-    this.noteForm.reset();
+    if (this.updateForm.invalid) return;
+    await this.noteService.updateNote(this.noteId(), this.updateForm.getRawValue());
+    this.updateForm.reset();
     this.router.navigate(['/notes']);
   }
 }
