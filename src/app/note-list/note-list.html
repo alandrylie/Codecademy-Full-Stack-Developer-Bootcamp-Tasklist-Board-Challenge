@@ -1,6 +1,17 @@
 <h1>My Sticky-Notes Board <span class="count" id="tabletPlus">Open Notes: {{openNoteCount()}} / Total Notes:
         {{totalNoteCount()}}</span><span class="count" id="mobile">Notes: {{openNoteCount()}} / Total:
         {{totalNoteCount()}}</span></h1>
+@if(totalNoteCount() > 0){
+<div id="noteProgress">
+    <div id="myBar" [style.width.%]="progress()" [attr.data-colour]="progressColour()">
+
+    </div>
+</div>
+}
+
+
+
+
 <div class="stickyNote">
     @for(note of notes(); track note.id){
 
@@ -8,14 +19,27 @@
         <i class="fa-solid fa-thumbtack" [attr.data-colour]="note.colour"></i>
         <h2>Title: {{note.title}}</h2>
         <p>Details: {{note.details}}</p>
-       <div class="btnWrapper"> <button class="remove" (click)="delete(note.id)"><i class="fa-solid fa-trash-can"></i></button>
-        <a class="updateLink" [routerLink]="['/notes', note.id, 'update']"><i class="fa-regular fa-pen-to-square"></i></a>
-        </div>  
+        <div class="btnWrapper">
+            <button class="remove btn" (click)="delete(note.id)"><i class="fa-solid fa-trash-can"></i></button>
+            @if(!note.completed){
+            <a class="updateLink" [routerLink]="['/notes', note.id, 'update']">
+                <i class="fa-regular fa-pen-to-square"></i></a>
+            <button class="complete btn" (click)="onCompleted(note.id)"><i
+                    class="fa-regular fa-circle-check"></i></button>
+            }
+            @else {
+                <button class="undo btn" (click)="onUndo(note.id)"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            }
+
+
+
+
+        </div>
     </article>
     }
 
     @empty {
     <div class="empty">
-        <p >No notes yet. Pin your first one!</p>
+        <p>No notes yet. Pin your first one!</p>
     </div>
     }

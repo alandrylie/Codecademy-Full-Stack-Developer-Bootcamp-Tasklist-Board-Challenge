@@ -58,7 +58,7 @@ export class NoteUpdate {
   }
 
   async delete(id: string) {
-    if (!confirm('Delete this note>')) return;
+    if (!confirm('Delete this note')) return;
     await this.noteService.deleteNote(id);
     this.router.navigate(['/notes']);
   }

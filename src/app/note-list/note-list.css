@@ -12,6 +12,34 @@ h1 {
   font-size: 2rem;
 }
 
+#mobile {
+  display: none;
+}
+
+#noteProgress {
+  width: 100%;
+  background-color: rgba(237, 224, 200, 0.25);
+  border: solid 1px #4a3625;
+}
+
+#myBar {
+  width: 1%;
+  height: 2rem;
+}
+
+#myBar[data-colour='red'] {
+  background-color: #a93226;
+}
+#myBar[data-colour='amber'] {
+  background-color: #c87f2a;
+}
+#myBar[data-colour='yellow'] {
+  background-color: #d4a017;
+}
+#myBar[data-colour='green'] {
+  background-color: #355e3b;
+}
+
 .stickyNote {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -40,11 +68,9 @@ h1 {
   transform: rotate(0.75deg);
 }
 
-.notes h2 {
-  font-size: 1rem;
-}
-.notes p {
-  font-size: 0.90rem;
+.notes:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  z-index: 3;
 }
 
 .notes[data-colour='yellow'] {
@@ -73,10 +99,6 @@ h1 {
   transform: rotate(3deg) scale(1.2);
 }
 
-.notes:hover {
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
-  z-index: 3;
-}
 .notes {
   &:hover {
     .fa-thumbtack {
@@ -95,14 +117,22 @@ h1 {
   color: #1a3f52;
 }
 .fa-thumbtack[data-colour='green'] {
-  color: #A93226;
+  color: #a93226;
 }
 .fa-thumbtack[data-colour='pink'] {
-  color: #355E3B;
+  color: #355e3b;
 }
 .fa-thumbtack[data-colour='blue'] {
-  color: #E2725B;
+  color: #e2725b;
 }
+
+.notes h2 {
+  font-size: 1rem;
+}
+.notes p {
+  font-size: 0.9rem;
+}
+
 .btnWrapper {
   display: flex;
   flex-direction: row;
@@ -112,17 +142,11 @@ h1 {
   padding-right: 0.5rem;
 }
 
-#mobile {
-  display: none;
-}
-
-.empty {
-  grid-column: 1 / -1;
-  font-size: 1.25rem;
-}
-.remove {
+.btn {
   background: transparent;
   border: none;
+}
+.remove {
   color: #a93226;
   transition: transform 0.2s ease;
 }
@@ -141,9 +165,37 @@ h1 {
   cursor: pointer;
 }
 
+.fa-circle-check:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.fa-circle-check {
+  color: #355e3b;
+  transition: transform 0.2s ease;
+}
+
+.fa-arrow-rotate-left:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.fa-arrow-rotate-left {
+  color: #8b5a15;
+  transition: transform 0.2s ease;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  font-size: 1.25rem;
+}
+
 @media (max-width: 862px) {
   h1 {
     font-size: 1.5rem;
+  }
+  #myBar {
+    height: 1.5rem;
   }
 }
 
@@ -170,6 +222,9 @@ h1 {
 }
 
 @media (max-width: 570px) {
+  #myBar {
+    height: 1rem;
+  }
   .notes {
     width: 13rem;
     height: 13.5rem;

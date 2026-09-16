@@ -15,10 +15,35 @@ export class NoteList {
   notes = toSignal(this.noteService.getNotes(), { initialValue: [] as StickyNoteInterface[] });
 
   openNoteCount = computed(() => this.notes().filter((n) => !n.completed).length);
+  completedCount = computed(() => this.notes().filter((c) => c.completed).length);
   totalNoteCount = computed(() => this.notes().length);
+  progress = computed(() => (this.completedCount() / this.totalNoteCount()) * 100);
+  progressColour = computed(() => {
+    let num: number = this.progress();
+    switch (true) {
+      case num <= 24:
+        return 'red';
+      case num <= 49:
+        return 'amber';
+      case num <= 74:
+        return 'yellow';
+      default:
+        return 'green';
+    }
+  });
 
   async delete(id: string) {
-    if (!confirm('Delete this note>')) return;
+    if (!confirm('Delete this note')) return;
     await this.noteService.deleteNote(id);
+  }
+
+  async onCompleted(id: string) {
+    if (!confirm('Note completed')) return;
+    await this.noteService.updateNote(id, { completed: true });
+  }
+
+  async onUndo(id: string) {
+    if (!confirm('Note completed')) return;
+    await this.noteService.updateNote(id, { completed: false });
   }
 }
