@@ -38,12 +38,12 @@ export class NoteList {
   }
 
   async onCompleted(id: string) {
-    if (!confirm('Note completed')) return;
+    if (!confirm('Mark note as completed')) return;
     await this.noteService.updateNote(id, { completed: true });
   }
 
   async onUndo(id: string) {
-    if (!confirm('Note completed')) return;
+    if (!confirm('Note is not completed?')) return;
     await this.noteService.updateNote(id, { completed: false });
   }
 }

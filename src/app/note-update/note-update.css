@@ -28,6 +28,12 @@
 #updateForm[data-colour='green'] {
   background: #c4efa8;
 }
+#updateForm[data-colour='lavender'] {
+  background: #E0C3FF;
+}
+#updateForm[data-colour='peach'] {
+  background: #FFCBA4;
+}
 
 p {
   color: #a93226;

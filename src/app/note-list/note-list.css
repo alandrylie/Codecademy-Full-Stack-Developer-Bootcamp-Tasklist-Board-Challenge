@@ -86,18 +86,30 @@ h1 {
 .notes[data-colour='green'] {
   background: #c4efa8;
 }
+.notes[data-colour='lavender'] {
+  background: #E0C3FF;
+}
+.notes[data-colour='peach'] {
+  background: #FFCBA4;
+}
 
 .notes[data-colour='green']:hover {
-  transform: rotate(-2.5deg) scale(1.2);
+  transform: rotate(-2.5deg) scale(1.1);
 }
 .notes[data-colour='yellow']:hover {
-  transform: rotate(2.5deg) scale(1.2);
+  transform: rotate(2.5deg) scale(1.1);
 }
 .notes[data-colour='pink']:hover {
-  transform: rotate(-3deg) scale(1.2);
+  transform: rotate(-3deg) scale(1.1);
 }
 .notes[data-colour='blue']:hover {
-  transform: rotate(3deg) scale(1.2);
+  transform: rotate(3deg) scale(1.1);
+}
+.notes[data-colour='lavender']:hover {
+  transform: rotate(2.75deg) scale(1.1);
+}
+.notes[data-colour='peach']:hover {
+  transform: rotate(-2.75deg) scale(1.1);
 }
 
 .notes {
@@ -125,6 +137,12 @@ h1 {
 }
 .fa-thumbtack[data-colour='blue'] {
   color: #e2725b;
+}
+.fa-thumbtack[data-colour='lavender'] {
+  color: #4B2E63;
+}
+.fa-thumbtack[data-colour='peach'] {
+  color: #1B4F72;
 }
 
 .notes h2 {
@@ -236,6 +254,7 @@ h1 {
   .notes p {
     font-size: 0.81rem;
   }
+  
 }
 
 @media (max-width: 515px) {
