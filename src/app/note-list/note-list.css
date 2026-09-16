@@ -61,23 +61,48 @@ h1 {
 }
 
 .notes[data-colour='green']:hover {
-  transform: rotate(-2.5deg) scale(1.06);
+  transform: rotate(-2.5deg) scale(1.2);
 }
 .notes[data-colour='yellow']:hover {
-  transform: rotate(2.5deg) scale(1.06);
+  transform: rotate(2.5deg) scale(1.2);
 }
 .notes[data-colour='pink']:hover {
-  transform: rotate(-3deg) scale(1.06);
+  transform: rotate(-3deg) scale(1.2);
 }
 .notes[data-colour='blue']:hover {
-  transform: rotate(3deg) scale(1.06);
+  transform: rotate(3deg) scale(1.2);
 }
 
 .notes:hover {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
   z-index: 3;
 }
+.notes {
+  &:hover {
+    .fa-thumbtack {
+      display: none;
+    }
+  }
+}
 
+.fa-thumbtack {
+  position: relative;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.fa-thumbtack[data-colour='yellow'] {
+  color: #1a3f52;
+}
+.fa-thumbtack[data-colour='green'] {
+  color: #A93226;
+}
+.fa-thumbtack[data-colour='pink'] {
+  color: #355E3B;
+}
+.fa-thumbtack[data-colour='blue'] {
+  color: #E2725B;
+}
 .btnWrapper {
   display: flex;
   flex-direction: row;
@@ -109,7 +134,7 @@ h1 {
 
 .updateLink {
   transition: transform 0.2s ease;
-  color: #22586E;
+  color: #22586e;
 }
 .updateLink:hover {
   transform: scale(1.5);

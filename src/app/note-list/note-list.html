@@ -5,6 +5,7 @@
     @for(note of notes(); track note.id){
 
     <article class="notes" [class.completed]="note.completed" [attr.data-colour]="note.colour">
+        <i class="fa-solid fa-thumbtack" [attr.data-colour]="note.colour"></i>
         <h2>Title: {{note.title}}</h2>
         <p>Details: {{note.details}}</p>
        <div class="btnWrapper"> <button class="remove" (click)="delete(note.id)"><i class="fa-solid fa-trash-can"></i></button>
