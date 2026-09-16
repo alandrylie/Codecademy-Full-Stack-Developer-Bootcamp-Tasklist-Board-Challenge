@@ -4,11 +4,14 @@
         <label for="title">Task Title:</label>
         <input id="title" formControlName="title" placeholder="What task needs doing.">
         @if(noteForm.controls.title.touched && noteForm.controls.title.invalid){
-        <p>A task title needs a minimum of 3 characters.</p>
+        <p>The note title needs to be between 3 - 15 Characters.</p>
         }
         <label for="details">Details</label>
-        <textarea id="details" rows="3" formControlName="details"
-            placeholder="Detail exactly what needs done."></textarea>
+        <textarea id="details" rows="7" formControlName="details"
+            placeholder="Detail exactly what needs done. Max Length 200 Characters"></textarea>
+          @if(noteForm.controls.details.touched && noteForm.controls.details.invalid){
+            <p>The note details needs to be 200 Characters or less.</p>
+          }
 
         <label id="colour">Sticky Note Colour</label>
         <select id="colour" formControlName="colour">
@@ -19,7 +22,7 @@
             <option value="yellow">Yellow</option>
         </select>
 
-        <button type="submit" [disabled]="noteForm.invalid">Add Note</button>
+        <button id="btnSubmit" type="submit" [disabled]="noteForm.invalid">Add Note</button>
     </form>
 
 </div>

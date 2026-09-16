@@ -16,10 +16,10 @@ export class NoteCreate {
 
   noteForm = new FormGroup({
     title: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(3)],
+      validators: [Validators.required, Validators.minLength(3), Validators.maxLength(15)],
       nonNullable: true,
     }),
-    details: new FormControl('', { validators: Validators.required, nonNullable: true }),
+    details: new FormControl('', { validators: [Validators.required, Validators.maxLength(200)], nonNullable: true }),
     colour: new FormControl('', { validators: Validators.required, nonNullable: true }),
   });
 

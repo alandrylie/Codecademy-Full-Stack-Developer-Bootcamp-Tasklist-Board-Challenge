@@ -1,17 +1,79 @@
 #formWrapper {
   display: flex;
-  height: 300px;
+  height: 26.5625rem;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 1rem;
+  font-family: var(--font-nav);
 }
 #createForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
   border: solid black 1px;
-  width: 250px;
-  padding: 8px;
-  border-radius: 15px;
-  color: #2B2620;
-  background-color: #C4EFA8;
+  width: 21.875rem;
+  padding: 0.5rem;
+  border-radius: 0.9375rem;
+  color: #2b2620;
+  background-color: #c4efa8;
+}
+
+p {
+  color: #a93226;
+  font-weight: 600;
+}
+input,
+textarea,
+select {
+  font-family: var(--font-nav);
+  line-height: normal;
+  font-size: 1rem;
+}
+
+#btnSubmit {
+  font-family: var(--font-nav);
+  width: 5rem;
+  margin: auto;
+  border-radius: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+#btnSubmit:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+  transform: scale(1.1);
+  background-color: #F5C6A8;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+
+
+  #createFrom {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 500px) {
+
+
+  #createForm {
+    width: 18rem;
+  }
+
+  input,
+  textarea,
+  select {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 420px) {
+  #createForm {
+    width: 85%;
+    margin: 0, 2%;
+  }
+
+  p{
+    font-size: 0.8rem;
+  }
 }

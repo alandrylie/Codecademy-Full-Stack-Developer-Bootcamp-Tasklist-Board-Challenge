@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter, switchMap } from 'rxjs';
 import { StickyService } from '../sticky-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -15,6 +15,7 @@ export class NoteUpdate {
   private route = inject(ActivatedRoute);
   private params = toSignal(this.route.paramMap);
   private noteService = inject(StickyService);
+  private router = inject(Router)
   noteId = computed(() => this.params()?.get('id') ?? '');
 
   noteForm = new FormGroup({
@@ -48,5 +49,7 @@ export class NoteUpdate {
   async onSubmit() {
     if (this.noteForm.invalid) return;
     await this.noteService.updateNote(this.noteId(), this.noteForm.getRawValue());
+    this.noteForm.reset();
+    this.router.navigate(['/notes']);
   }
 }

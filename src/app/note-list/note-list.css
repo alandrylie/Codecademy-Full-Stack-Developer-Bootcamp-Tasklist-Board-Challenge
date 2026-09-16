@@ -18,28 +18,102 @@ h1 {
   gap: 0.625rem;
   justify-items: center;
   padding: 2rem;
+  row-gap: 2rem;
 }
 
 .notes {
   display: flex;
   flex-direction: column;
-  background-color: pink;
   border: solid black 1px;
   padding: 0.5rem;
-
-  width: 12.5rem;
-  border-radius: 0.625rem;
-  height: 9.375rem;
+  width: 15rem;
+  border-radius: 0.75rem;
+  height: 15rem;
   font-family: var(--font-notes);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.15s ease;
 }
+
+.notes:nth-child(even) {
+  transform: rotate(0.75deg);
+}
+
+.notes h2 {
+  font-size: 1.25rem;
+}
+.notes p {
+  font-size: 0.95rem;
+}
+
+.notes[data-colour='yellow'] {
+  background: #fff3a0;
+}
+.notes[data-colour='pink'] {
+  background: #ffc7d9;
+}
+.notes[data-colour='blue'] {
+  background: #b8e1ff;
+}
+.notes[data-colour='green'] {
+  background: #c4efa8;
+}
+
+.notes[data-colour='green']:hover {
+  transform: rotate(-2.5deg) scale(1.06);
+}
+.notes[data-colour='yellow']:hover {
+  transform: rotate(2.5deg) scale(1.06);
+}
+.notes[data-colour='pink']:hover {
+  transform: rotate(-3deg) scale(1.06);
+}
+.notes[data-colour='blue']:hover {
+  transform: rotate(3deg) scale(1.06);
+}
+
+.notes:hover {
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 #mobile {
   display: none;
 }
 
 .empty {
- grid-column: 1 / -1;
- font-size: 1.25rem;
- 
+  grid-column: 1 / -1;
+  font-size: 1.25rem;
+}
+.remove {
+  background: transparent;
+  border: none;
+  color: #a93226;
+  transition: transform 0.2s ease;
+}
+
+.remove:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.updateLink {
+  transition: transform 0.2s ease;
+  color: #22586E;
+}
+.updateLink:hover {
+  transform: scale(1.5);
+  cursor: pointer;
 }
 
 @media (max-width: 862px) {
@@ -53,9 +127,9 @@ h1 {
     font-size: 1.25rem;
   }
 
-  .stickyNote{
+  .stickyNote {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    padding: .75rem;
+    padding: 0.75rem;
   }
 
   #tabletPlus {
@@ -65,9 +139,33 @@ h1 {
     display: inline-block;
   }
 
-  .empty{
+  .empty {
     font-size: 1rem;
   }
+}
 
+@media (max-width: 570px) {
+  .notes {
+    width: 13rem;
+    height: 13.5rem;
+  }
+  .notes h2 {
+    font-size: 1.125rem;
+  }
+  .notes p {
+    font-size: 0.855rem;
+  }
+}
 
+@media (max-width: 515px) {
+  .notes {
+    width: 12.5rem;
+  }
+
+  .notes h2 {
+    font-size: 1.0125rem;
+  }
+  .notes p {
+    font-size: 0.7695rem;
+  }
 }
