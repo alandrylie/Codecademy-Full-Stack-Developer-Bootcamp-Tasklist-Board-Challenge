@@ -41,10 +41,10 @@ h1 {
 }
 
 .notes h2 {
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 .notes p {
-  font-size: 0.95rem;
+  font-size: 0.90rem;
 }
 
 .notes[data-colour='yellow'] {
@@ -175,10 +175,10 @@ h1 {
     height: 13.5rem;
   }
   .notes h2 {
-    font-size: 1.125rem;
+    font-size: 0.9rem;
   }
   .notes p {
-    font-size: 0.855rem;
+    font-size: 0.81rem;
   }
 }
 
@@ -188,7 +188,7 @@ h1 {
   }
 
   .notes h2 {
-    font-size: 1.0125rem;
+    font-size: 0.81rem;
   }
   .notes p {
     font-size: 0.7695rem;

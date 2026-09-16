@@ -1,17 +1,17 @@
 <div id="formWrapper">
 
     <form id="updateForm" [formGroup]="updateForm" (ngSubmit)="onSubmit()" [attr.data-colour]="this.noteColour()">
-         <label for="title">Task Title:</label>
+        <label for="title">Task Title:</label>
         <input id="title" formControlName="title" placeholder="What task needs doing.">
         @if(updateForm.controls.title.touched && updateForm.controls.title.invalid){
-        <p>The note title needs to be between 3 - 15 Characters.</p>
+        <p>The note title needs to be between 3 - 20 Characters.</p>
         }
         <label for="details">Details</label>
         <textarea id="details" rows="7" formControlName="details"
             placeholder="Detail exactly what needs done. Max Length 200 Characters"></textarea>
-          @if(updateForm.controls.details.touched && updateForm.controls.details.invalid){
-            <p>The note details needs to be 200 Characters or less.</p>
-          }
+        @if(updateForm.controls.details.touched && updateForm.controls.details.invalid){
+        <p>The note details needs to be 200 Characters or less.</p>
+        }
 
         <label id="colour">Sticky Note Colour</label>
         <select id="colour" formControlName="colour">
@@ -21,8 +21,11 @@
             <option value="green">Green</option>
             <option value="yellow">Yellow</option>
         </select>
-
-        <button id="btnSubmit" type="submit" [disabled]="updateForm.invalid">Update Note</button>
+        <div class="btnWrapper">
+            <button class="remove" type="button" (click)="delete(this.noteId())"><i class="fa-solid fa-trash-can"></i></button>
+            <button class="btn" type="button" (click)="onCancel()">Cancel</button>
+            <button class="btn" type="submit" [disabled]="updateForm.invalid">Update </button>
+        </div>
     </form>
 
 </div>

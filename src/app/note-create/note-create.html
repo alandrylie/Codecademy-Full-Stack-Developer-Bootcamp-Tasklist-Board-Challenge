@@ -4,7 +4,7 @@
         <label for="title">Task Title:</label>
         <input id="title" formControlName="title" placeholder="What task needs doing.">
         @if(noteForm.controls.title.touched && noteForm.controls.title.invalid){
-        <p>The note title needs to be between 3 - 15 Characters.</p>
+        <p>The note title needs to be between 3 - 20 Characters.</p>
         }
         <label for="details">Details</label>
         <textarea id="details" rows="7" formControlName="details"

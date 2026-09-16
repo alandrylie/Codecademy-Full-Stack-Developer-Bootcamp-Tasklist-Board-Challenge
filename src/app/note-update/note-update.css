@@ -41,7 +41,7 @@ select {
   font-size: 1rem;
 }
 
-#btnSubmit {
+.btn {
   font-family: var(--font-nav);
   width: 5rem;
   margin: auto;
@@ -49,11 +49,32 @@ select {
   transition: transform 0.2s ease;
 }
 
-#btnSubmit:hover {
+.btn:hover {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
   z-index: 3;
   transform: scale(1.1);
   background-color: #f5c6a8;
+  cursor: pointer;
+}
+
+.btnWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.remove {
+  background: transparent;
+  border: none;
+  color: #a93226;
+  transition: transform 0.2s ease;
+}
+
+.remove:hover {
+  transform: scale(1.5);
   cursor: pointer;
 }
 

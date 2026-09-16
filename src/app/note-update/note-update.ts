@@ -17,11 +17,11 @@ export class NoteUpdate {
   private noteService = inject(StickyService);
   private router = inject(Router);
   noteId = computed(() => this.params()?.get('id') ?? '');
-  noteColour = computed( () => this.note()?.colour);
+  noteColour = computed(() => this.note()?.colour);
 
   updateForm = new FormGroup({
     title: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(3), Validators.maxLength(15)],
+      validators: [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
       nonNullable: true,
     }),
     details: new FormControl('', {
@@ -54,6 +54,16 @@ export class NoteUpdate {
     if (this.updateForm.invalid) return;
     await this.noteService.updateNote(this.noteId(), this.updateForm.getRawValue());
     this.updateForm.reset();
+    this.router.navigate(['/notes']);
+  }
+
+  async delete(id: string) {
+    if (!confirm('Delete this note>')) return;
+    await this.noteService.deleteNote(id);
+    this.router.navigate(['/notes']);
+  }
+
+  onCancel(){
     this.router.navigate(['/notes']);
   }
 }
