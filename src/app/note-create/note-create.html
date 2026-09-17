@@ -10,7 +10,7 @@
         <textarea id="details" rows="7" formControlName="details"
             placeholder="Detail exactly what needs done. Max Length 200 Characters"></textarea>
           @if(noteForm.controls.details.touched && noteForm.controls.details.invalid){
-            <p>The note details needs to be 200 Characters or less.</p>
+            <p>Details are required and must be 200 characters or less.</p>
           }
 
         <label id="colour">Sticky Note Colour</label>
