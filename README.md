@@ -120,3 +120,10 @@ src/app/
 - **Mark complete / Undo** - toggle a note's completed state without leaving the board.
 - Six note colours, each with matching hover, thumbtack, and background styling.
 - Fully responsive layout, tested down to sub-320px screen widths.
+
+  ## How I Built This
+
+- Built for a 7-day bootcamp challenge, following the course walkthrough for the core CRUD features
+- All CSS styling and extra features (colour-matched notes, pins, progress bar, mark as done, undo) are my own work
+- No AI-generated code. When I got stuck, I used an AI assistant only as a mentor, asking it to help me understand errors and guide my thinking, never to write code for me
+- Followed a Build It, Link It, Test It approach, committing each working step to Git
